@@ -1,0 +1,11 @@
+steps:
+  - name: gcr.io/cloud-builders/git
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "Cloning repository"
+        git clone https://Juanfbl@bitbucket.org/juanfbl/test-app.git
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'app_two'
+    args: ['build', '-t', 'test-image:$BRANCH_NAME','.']
